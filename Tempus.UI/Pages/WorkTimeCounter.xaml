@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tempus.UI.Pages.WorkTimeCounter"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vms="clr-namespace:Tempus.UI.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vms:WorkTimeCounterViewModel />
+    </ContentPage.BindingContext>
+
+    <!--  Inputs  -->
+    <VerticalStackLayout>
+        <Label FontSize="Large" Text="Калькулятор времени" />
+        <VerticalStackLayout>
+            <VerticalStackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="MinimumWidthRequest" Value="230" />
+                    <Setter Property="VerticalTextAlignment" Value="Center" />
+                    <Setter Property="Margin" Value="5,5" />
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="MinimumWidthRequest" Value="90" />
+                    <Setter Property="Margin" Value="5,5" />
+                </Style>
+            </VerticalStackLayout.Resources>
+            <HorizontalStackLayout>
+                <Label>Время прихода</Label>
+                <TimePicker Format="HH:mm" Time="{Binding ArrivalTime}" />
+                <Button Command="{Binding SetArrivalTimeNowCommand}" Text="Сейчас" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label>Время ухода на обед</Label>
+                <TimePicker Format="HH:mm" Time="{Binding DinnerStartTime}" />
+                <Button Command="{Binding SetDinnerStartTimeNowCommand}" Text="Сейчас" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label>Время прихода с обеда</Label>
+                <TimePicker Format="HH:mm" Time="{Binding DinnerEndTime}" />
+                <Button Command="{Binding SetDinnerEndTimeNowCommand}" Text="Сейчас" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label>
+                    Время окончания рабочего дня
+                </Label>
+                <TimePicker Format="HH:mm" Time="{Binding DepartureTime}" />
+                <Button Command="{Binding SetDepartureTimeNowCommand}" Text="Сейчас" />
+            </HorizontalStackLayout>
+            <Button
+                BackgroundColor="Green"
+                Command="{Binding CalculateDepartureTimeCommand}"
+                Text="Рассчитать ожидаемый конец дня" />
+            <HorizontalStackLayout>
+                <Button
+                    BackgroundColor="Transparent"
+                    BorderColor="Red"
+                    BorderWidth="1"
+                    Command="{Binding ResetCommand}"
+                    Text="Сбросить"
+                    TextColor="Red"
+                    WidthRequest="100" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+
+        <!--  Statistics  -->
+        <VerticalStackLayout>
+            <VerticalStackLayout.Resources>
+                <Style TargetType="HorizontalStackLayout">
+                    <Setter Property="Margin" Value="0,5" />
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="VerticalTextAlignment" Value="Center" />
+                </Style>
+            </VerticalStackLayout.Resources>
+            <Label FontSize="Large" Text="Статистика дня" />
+            <HorizontalStackLayout>
+                <Label FontAttributes="Bold" WidthRequest="200">Первая половина дня:</Label>
+                <Label Text="{Binding FirstHalfOfDayTimeSpan}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label FontAttributes="Bold" WidthRequest="200">Время на обед:</Label>
+                <Label Text="{Binding DinnerTimeSpan}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label FontAttributes="Bold" WidthRequest="200">Вторая половина дня:</Label>
+                <Label Text="{Binding SecondHalfOfDayTimeSpan}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label FontAttributes="Bold" WidthRequest="200">Всего:</Label>
+                <Label Text="{Binding TotalWorkTimeTimeSpan}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Button
+                    Command="{Binding RefreshDayStatisticsCommand}"
+                    Text="Обновить"
+                    WidthRequest="100" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
