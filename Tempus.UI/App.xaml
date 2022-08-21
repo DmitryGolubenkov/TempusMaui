@@ -15,7 +15,7 @@
     </Application.Resources>
 
     <Application.MainPage>
-        <Shell FlyoutBehavior="{OnIdiom Phone=Disabled, Default=Locked}">
+        <Shell FlyoutBackgroundColor="{StaticResource Gray100}" FlyoutBehavior="{OnIdiom Phone=Disabled, Default=Locked}">
 
             <FlyoutItem Title="Время" Icon="clock.png">
                 <ShellContent ContentTemplate="{DataTemplate pages:WorkTimeCounter}" />

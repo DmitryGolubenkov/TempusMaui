@@ -8,7 +8,7 @@
         <vms:SettingsViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
+    <VerticalStackLayout Margin="20">
         <Label FontSize="Large" Text="Настройки" />
     </VerticalStackLayout>
 

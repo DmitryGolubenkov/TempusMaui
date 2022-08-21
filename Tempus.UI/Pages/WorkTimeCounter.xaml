@@ -10,61 +10,69 @@
     </ContentPage.BindingContext>
 
     <!--  Inputs  -->
-    <VerticalStackLayout>
-        <Label FontSize="Large" Text="Калькулятор времени" />
-        <VerticalStackLayout>
-            <VerticalStackLayout.Resources>
-                <Style TargetType="Label">
-                    <Setter Property="MinimumWidthRequest" Value="230" />
-                    <Setter Property="VerticalTextAlignment" Value="Center" />
-                    <Setter Property="Margin" Value="5,5" />
-                </Style>
-                <Style TargetType="Button">
-                    <Setter Property="MinimumWidthRequest" Value="90" />
-                    <Setter Property="Margin" Value="5,5" />
-                </Style>
-            </VerticalStackLayout.Resources>
-            <HorizontalStackLayout>
-                <Label>Время прихода</Label>
-                <TimePicker Format="HH:mm" Time="{Binding ArrivalTime}" />
-                <Button Command="{Binding SetArrivalTimeNowCommand}" Text="Сейчас" />
-            </HorizontalStackLayout>
+    <VerticalStackLayout Margin="20">
+        <Frame Background="{StaticResource Secondary}" CornerRadius="5">
+            <VerticalStackLayout>
+                <VerticalStackLayout.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="MinimumWidthRequest" Value="190" />
+                        <Setter Property="VerticalTextAlignment" Value="Center" />
+                        <Setter Property="Margin" Value="5,5" />
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="MinimumWidthRequest" Value="70" />
+                        <Setter Property="Margin" Value="5,5" />
+                    </Style>
+                </VerticalStackLayout.Resources>
 
-            <HorizontalStackLayout>
-                <Label>Время ухода на обед</Label>
-                <TimePicker Format="HH:mm" Time="{Binding DinnerStartTime}" />
-                <Button Command="{Binding SetDinnerStartTimeNowCommand}" Text="Сейчас" />
-            </HorizontalStackLayout>
+                <Label FontSize="Large" Text="Калькулятор времени" />
 
-            <HorizontalStackLayout>
-                <Label>Время прихода с обеда</Label>
-                <TimePicker Format="HH:mm" Time="{Binding DinnerEndTime}" />
-                <Button Command="{Binding SetDinnerEndTimeNowCommand}" Text="Сейчас" />
-            </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label>
-                    Время окончания рабочего дня
-                </Label>
-                <TimePicker Format="HH:mm" Time="{Binding DepartureTime}" />
-                <Button Command="{Binding SetDepartureTimeNowCommand}" Text="Сейчас" />
-            </HorizontalStackLayout>
-            <Button
-                BackgroundColor="Green"
-                Command="{Binding CalculateDepartureTimeCommand}"
-                Text="Рассчитать ожидаемый конец дня" />
-            <HorizontalStackLayout>
-                <Button
-                    BackgroundColor="Transparent"
-                    BorderColor="Red"
-                    BorderWidth="1"
-                    Command="{Binding ResetCommand}"
-                    Text="Сбросить"
-                    TextColor="Red"
-                    WidthRequest="100" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+                <HorizontalStackLayout>
+                    <Label>Время прихода</Label>
+                    <TimePicker Format="HH:mm" Time="{Binding ArrivalTime}" />
+                    <Button Command="{Binding SetArrivalTimeNowCommand}" Text="Сейчас" />
+                </HorizontalStackLayout>
 
+                <HorizontalStackLayout>
+                    <Label>Время ухода на обед</Label>
+                    <TimePicker Format="HH:mm" Time="{Binding DinnerStartTime}" />
+                    <Button Command="{Binding SetDinnerStartTimeNowCommand}" Text="Сейчас" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Label>Время прихода с обеда</Label>
+                    <TimePicker Format="HH:mm" Time="{Binding DinnerEndTime}" />
+                    <Button Command="{Binding SetDinnerEndTimeNowCommand}" Text="Сейчас" />
+                </HorizontalStackLayout>
+
+
+                <HorizontalStackLayout>
+                    <Label>
+                        Время ухода
+                    </Label>
+                    <TimePicker Format="HH:mm" Time="{Binding DepartureTime}" />
+                    <Button Command="{Binding SetDepartureTimeNowCommand}" Text="Сейчас" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Button
+                        BackgroundColor="Green"
+                        Command="{Binding CalculateDepartureTimeCommand}"
+                        Text="Рассчитать ожидаемый конец дня" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Button
+                        BackgroundColor="Transparent"
+                        BorderColor="Red"
+                        BorderWidth="1"
+                        Command="{Binding ResetCommand}"
+                        Text="Сбросить"
+                        TextColor="Red"
+                        WidthRequest="100" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
 
         <!--  Statistics  -->
         <VerticalStackLayout>

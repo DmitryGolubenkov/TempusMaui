@@ -8,7 +8,7 @@
         <vms:ToolsViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
+    <VerticalStackLayout Margin="20">
         <Label FontSize="Large" Text="Инструменты" />
     </VerticalStackLayout>
 </ContentPage>

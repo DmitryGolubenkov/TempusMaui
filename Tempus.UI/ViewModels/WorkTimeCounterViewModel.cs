@@ -1,7 +1,5 @@
-﻿using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Tempus.UI.ViewModels;
 
@@ -151,7 +149,9 @@ public partial class WorkTimeCounterViewModel
 
 
     //Refresh statistics if relevant time changes occur.
-    partial void OnDinnerEndTimeChanging(TimeSpan value) => RefreshDayStatistics();
+    partial void OnArrivalTimeChanged(TimeSpan value) => RefreshDayStatistics();
+    partial void OnDinnerStartTimeChanged(TimeSpan value) => RefreshDayStatistics();
+    partial void OnDinnerEndTimeChanged(TimeSpan value) => RefreshDayStatistics();
     partial void OnDepartureTimeChanged(TimeSpan value) => RefreshDayStatistics();
 
 
